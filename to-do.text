@@ -1,0 +1,61 @@
+------------------------------------------------------
+---------------------- BACK-END ----------------------
+------------------------------------------------------
+
+- Analyze API to figure out format of responses
+
+  What data is needed from StackOverflow-API?
+    Questions related to a search query: 
+      - Relevance of question to query 
+      - List of questions
+    Question information:
+      - Date posted
+      - Whether it was tagged 'answered'
+      - Number of answers
+      - Text from question post
+    Answer Information: 
+      - Test from answer post 
+      - Number of upvotes
+      - Credibility score of poster
+
+- Generate some fake data similar to format from API
+
+- Write data processing functions for the fake data
+
+  - User sends query string
+  - Get top X resulting questions to a query 
+  - Calculate score for each thread based on data
+  - Send results to display
+
+- Integrate actual requests to StackOverflow-API
+
+  - Register on Stack Apps, get API key 
+  - Use $http to make get requests to API
+
+
+-------------------------------------------------------
+---------------------- FRONT-END ----------------------
+-------------------------------------------------------
+
+- Mainpage: 
+  - Input bar to type query
+
+- Results: 
+  - Show questions on page ordered by score 
+    Display has stats and summary of question
+  - On-click of question summary, display whole question
+  - On-click of question, display top answer and link to redirect-to SO link
+
+
+-------------------------------------------------------
+------------------- STRETCH GOALS ---------------------
+-------------------------------------------------------
+
+- Deployment 
+  Grunt/gulp for minifying files 
+- Use Bootstrap for css 
+- Track search history: display last 5 searches on homepage
+  Use mongodb for data store 
+- Use Google Search instead of StackOverflow-API search
+- Implement users and tracking of users' search history
+
