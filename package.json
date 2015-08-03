@@ -1,0 +1,12 @@
+{
+  "name": "Hackerhelpr",
+  "version": "0.1",
+  "description": "StackOverflow summarizer tool",
+  "author": "Shelley Wang",
+  "dependencies": {
+    "angular": "^1.4.3",
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.0"
+  }
+}
