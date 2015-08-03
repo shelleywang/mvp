@@ -4,7 +4,7 @@
   "author": "Shelley Wang",
   "dependencies": {
     "angular": "^1.4.3",
-    "angular-route": "^1.4.3",
+    "angular-ui-router": "^0.2.15",
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
     "mongoose": "^4.1.0"

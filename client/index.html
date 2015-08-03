@@ -9,10 +9,13 @@
   <body>
     <h1>HackerHelpr</h1>
 
-    <div ng-view></div>
+    <div ui-view></div>
+
+    <div ui-view="searchBar"></div>
+    <div ui-view="resultsDiv"></div>
 
     <script src="angular/angular.js"></script>
-    <script src="angular-route/angular-route.js"></script>
+    <script src="angular-ui-router/build/angular-ui-router.js"></script>
 
     <script src="app/answers/answers.js"></script>
     <script src="app/search/search.js"></script>
