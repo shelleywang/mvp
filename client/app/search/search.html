@@ -1,0 +1,11 @@
+<h2>TEST</h2>
+<div ng-app='Search'>
+  <form ng-submit='redirect()'> 
+  <input type='text' 
+         placeholder='What would you like to know?'
+         ng-model='searchTerms'/> 
+  <input type='submit' 
+         value='submit'/>
+  </form>
+  <p>{{ searchTerms }}</p>
+</div>

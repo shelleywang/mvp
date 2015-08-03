@@ -51,6 +51,8 @@
 ------------------- STRETCH GOALS ---------------------
 -------------------------------------------------------
 
+- Narrow down results 
+  Use Stack Overflow tags 
 - Deployment 
   Grunt/gulp for minifying files 
 - Use Bootstrap for css 

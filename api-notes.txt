@@ -1,0 +1,83 @@
+/SEARCH
+
+- Very limited, can only search in-title words 
+  Use /SIMILAR instead?
+
+  /2.2/similar?pagesize=5&order=desc&sort=relevance&title=grunt watch&site=stackoverflow&filter=!SmLtY3)Y5DjXArVbUL
+
+
+DEFAULT RESULT: 
+  { "items": [
+      {
+        "tags": [
+          "javascript",
+          "angularjs",
+          "watch",
+          "angularjs-watch"
+        ],
+        "owner": {
+          "reputation": 1199,
+          "user_id": 1502780,
+          "user_type": "registered",
+          "accept_rate": 76,
+          "profile_image": "http://i.stack.imgur.com/o2EVs.jpg?s=128&g=1",
+          "display_name": "Gnuey",
+          "link": "http://stackoverflow.com/users/1502780/gnuey"
+        },
+        "is_answered": false,
+        "view_count": 60,
+        "answer_count": 2,
+        "score": 5,
+        "last_activity_date": 1438629527,
+        "creation_date": 1438624186,
+        "last_edit_date": 1438629527,
+        "question_id": 31793606,
+        "link": "http://stackoverflow.com/questions/31793606/what-is-considered-a-watcher-in-angular",
+        "title": "What is considered a watcher in Angular?"
+    }]}
+
+    "has_more": true,
+    "quota_max": 10000,
+    "quota_remaining": 9955
+
+
+    /2.2/similar?pagesize=5&order=desc&sort=relevance&title=grunt watch&site=stackoverflow&filter=!6P-beWgeK5bgo
+
+
+    "answers": [
+            {
+              "owner": {
+                "reputation": 5424,
+                "user_id": 492325,
+                "accept_rate": 100
+              },
+              "is_accepted": false,
+              "score": 1,
+              "last_activity_date": 1383842707,
+              "creation_date": 1383842707,
+              "answer_id": 19841691,
+              "question_id": 19838409
+    }
+         ],
+         "tags": [
+           "gruntjs",
+           "grunt-contrib-watch",
+           "grunt-contrib-compass"
+         ],
+         "owner": {
+           "reputation": 46,
+           "user_id": 2505665,
+           "accept_rate": 69
+         },
+         "is_answered": true,
+         "view_count": 3099,
+         "answer_count": 1,
+         "score": 1,
+         "last_activity_date": 1383842707,
+         "creation_date": 1383834445,
+         "last_edit_date": 1383842339,
+         "question_id": 19838409,
+         "link": "http://stackoverflow.com/questions/19838409/grunt-grunfile-js-and-grunt-watch",
+         "title": "Grunt grunfile.js and grunt watch",
+         "body": "<p>** I want to be able to use Compass but Grunt watch doesn't work and give me strange errors:**</p>\n\n<pre><code>Running \"watch\" task\nWaiting...Verifying property watch exists in config...ERROR\n&gt;&gt; Unable to process task.\nWarning: Required config property \"watch\" missing.\n\n/Applications/MAMP/htdocs/davide77.bitbucket.org/sky-route-1/node_modules/grunt-contrib-compass/node_modules/tmp/lib/tmp.js:261\n  throw err;\n        ^\nRangeError: Maximum call stack size exceeded\n</code></pre>\n\n<pre class=\"lang-js prettyprint-override\"><code>module.exports = function (grunt) {\n\n  // Project configuration.\n  grunt.initConfig({\n\n    pkg: grunt.file.readJSON('package.json'),\n\n    compass: {\n\n      dev: {\n        src: 'sass',\n        dest: 'stylesheets',\n        outputstyle: 'expanded',\n        linecomments: true,\n        forcecompile: true,\n        require: [\n          'animate-sass',\n          'mylib'\n        ],\n        debugsass: true,\n        images: '/assets/images',\n        relativeassets: true\n      },\n      prod: {\n        src: 'sass',\n        dest: 'stylesheets',\n        outputstyle: 'compressed',\n        linecomments: false,\n        forcecompile: true,\n        require: [\n          'animate-sass',\n          'mylib'\n        ],\n        debugsass: false,\n        images: '/assets/images',\n        relativeassets: true\n      },\n      dist: {\n        src: 'sass',\n        dest: 'stylesheets',\n        outputstyle: 'compressed',\n        linecomments: false,\n        forcecompile: true,\n        require: [\n          'animate-sass',\n          'mylib'\n        ],\n        debugsass: false,\n        images: '/assets/images',\n        relativeassets: true\n      },\n\n      watch: { // for development run 'grunt watch'\n        compass: {\n          files: ['sass/*.scss'],\n          tasks: ['compass:dev']\n        }\n      }\n    }\n  });\n\n  // Default task(s). \n\n  //grunt.registerTask('default', 'compass:dev');\n\n  grunt.registerTask('watch', ['watch']);\n  grunt.loadTasks('watch');\n\n  grunt.loadNpmTasks('grunt-contrib-watch');\n  grunt.loadNpmTasks('grunt-contrib-compass');\n  grunt.registerTask('default', ['compass']);\n};\n</code></pre>\n"
+       },
