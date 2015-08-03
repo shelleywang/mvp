@@ -4,15 +4,17 @@
     <meta charset="utf-8"/>
     <title>HackerHelpr</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
-
+    <link href='http://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <h1>HackerHelpr</h1>
+    <div class="mainBody">
+      <div ui-view></div>
 
-    <div ui-view></div>
-
-    <div ui-view="searchBar"></div>
-    <div ui-view="resultsDiv"></div>
+      <div ui-view="searchBar"></div>
+      <div ui-view="resultsDiv"></div>
+    </div>
+    <p class='footer'>By: Shelley Wang 
+      <br>[not affiliated with StackOverflow]</p>
 
     <script src="angular/angular.js"></script>
     <script src="angular-ui-router/build/angular-ui-router.js"></script>

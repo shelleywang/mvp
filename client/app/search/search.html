@@ -1,11 +1,13 @@
-<h2>TEST</h2>
+<header></header>
 <div ng-app='Search'>
-  <form ng-submit='redirect()'> 
+  <form name="searchForm" ng-submit='redirect()'> 
+
   <input type='text' 
+         class='searchbox'
+         name='searchQuery'
          placeholder='What would you like to know?'
          ng-model='searchTerms'/> 
-  <input type='submit' 
-         value='submit'/>
+<!--   <input type='submit' 
+         value='submit'/> -->
   </form>
-  <p>{{ searchTerms }}</p>
 </div>
