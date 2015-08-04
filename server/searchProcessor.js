@@ -1,44 +1,30 @@
 var fs = require('fs'),
-    config = require('./config.js'),
     moment = require('moment'),
-    Bing = require('node-bing-api')({ accKey: config.API_KEY });
+    bingHelper = require('./utils/bingHelper.js');
 
-var retrieveBing = function(query) {
-  // TEMPORARY
-  // used to populate dummy data file sample3.json
-  Bing.web(query+ ' site:stackoverflow.com', {
-    top: 20
-  }, function(error, res, body) {
-    console.log(res,JSON.stringify(body));
-    var filepath = __dirname+'/../client/test/sample3.json';
-    fs.writeFileSync(filepath, JSON.stringify(body));
-  })
-}
 
 var retrieveAnswers = function(query) {
   // calls out to StackOverflow API and retrieves data
   // TESTING: using dummy data
 
-  // retrieveBing('javascript fizzbuzz');
-
   var filepath = __dirname+'/../client/test/sample.json';
   var file = fs.readFileSync(filepath, 'utf8');
   return JSON.parse(file).items;
-}
+};
 
 var removeUnanswered = function(data) {
   var bestResults = data.filter(function (item) {
     return item.answer_count >=1; 
   })
   return bestResults;
-}
+};
 
 var findHighestRepAnswer = function(question) {
   console.log(question.answers[0])
   return question.answers.reduce(function(prev,current) {
     if (current.owner.reputation > prev) return current.owner.reputation;
   },0);
-}
+};
 
 var getStats = function(data) {
   var results = [];
@@ -49,16 +35,18 @@ var getStats = function(data) {
     stats.answered = question.is_answered;
     stats.views = question.view_count;
     stats.answerCount = question.answer_count;
+
     var unformattedDate = new Date(question.creation_date*1000);
+    stats.normDate = unformattedDate;
     stats.postDate = moment(unformattedDate).fromNow();
+
     stats.link = question.link;
-    console.log(findHighestRepAnswer(question));
     stats.highestRep = findHighestRepAnswer(question);
     results.push(stats);
   });
 
   return results;
-}
+};
 
 
 module.exports = {
