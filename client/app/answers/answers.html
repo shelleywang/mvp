@@ -1,17 +1,19 @@
 <div ng-app='Answers'> 
-  Your query: {{query}}
-  <br>
-  Sort by: 
-  <a class='sort' ng-class='{bold: orderingBy === "views"}' ng-click='order("views")'>Views</a>
-  || 
-  <a class='sort' ng-class='{bold: orderingBy === "answerCount"}' ng-click='order("answerCount")'>AnswerCount</a>
+  <div>Searching for: {{query}}</div>
+  <div>Sort by: 
+    <a class='sort' ng-class='{bold: orderingBy === "views"}' ng-click='order("views")'>Views</a>
+    || 
+    <a class='sort' ng-class='{bold: orderingBy === "answerCount"}' ng-click='order("answerCount")'>AnswerCount</a>
+    || 
+    <a class='sort' ng-class='{bold: orderingBy === "normDate"}' ng-click='order("normDate")'>Date</a>
+    || 
+    <a class='sort' ng-class='{bold: orderingBy === "highestRep"}' ng-click='order("highestRep")'>Rep</a>
+  </div>
 
   <div ng-repeat='answer in results'>
     <h3><a href='{{answer.link}}'> {{answer.questionText}}</a> </h3>
-    <div><span class='statLabel'>Answered:</span> {{answer.answered}}  <span class='statLabel'>Views:</span> {{answer.views}}  <span class='statLabel'>#Answers:</span> {{answer.answerCount}} </div>
+    <div><span class='statLabel'>Answered:</span> {{answer.answered}}  <span class='statLabel'>Views:</span> {{answer.views}}  <span class='statLabel'>#Answers:</span> {{answer.answerCount}}  <span class='statLabel'>Rep:</span> {{answer.highestRep}}</div>
     <div>{{answer.postDate}}</div>
   </div>
   <br><br>
-{{results}}
-{{test}}
 </div>

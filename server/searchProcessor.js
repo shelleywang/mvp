@@ -31,6 +31,7 @@ var getStats = function(data) {
   data.forEach(function(question) {
     var stats = {};
     stats.questionText = question.title;
+    stats.link = question.link;
     stats.tags = question.tags;
     stats.answered = question.is_answered;
     stats.views = question.view_count;
@@ -40,8 +41,9 @@ var getStats = function(data) {
     stats.normDate = unformattedDate;
     stats.postDate = moment(unformattedDate).fromNow();
 
-    stats.link = question.link;
     stats.highestRep = findHighestRepAnswer(question);
+
+    
     results.push(stats);
   });
 
