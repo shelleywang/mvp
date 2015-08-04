@@ -2,10 +2,23 @@ var fs = require('fs'),
     config = require('./config.js'),
     Bing = require('node-bing-api')({ accKey: config.API_KEY });
 
+var retrieveBing = function(query) {
+  // TEMPORARY
+  // used to populate dummy data file sample3.json
+  Bing.web(query+ ' site:stackoverflow.com', {
+    top: 20
+  }, function(error, res, body) {
+    console.log(res,JSON.stringify(body));
+    var filepath = __dirname+'/../client/test/sample3.json';
+    fs.writeFileSync(filepath, JSON.stringify(body));
+  })
+}
 
 var retrieveAnswers = function(query) {
   // calls out to StackOverflow API and retrieves data
   // TESTING: using dummy data
+
+  // retrieveBing('javascript fizzbuzz');
 
   var filepath = __dirname+'/../client/test/sample.json';
   var file = fs.readFileSync(filepath, 'utf8');
