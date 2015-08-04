@@ -1,27 +1,12 @@
 var fs = require('fs'),
     moment = require('moment'),
-    bingHelper = require('./utils/bingHelper.js');
+    bingHelper = require('./utils/bingHelper.js'),
+    stackHelper = require('./utils/stackHelper.js');
 
-
-var retrieveAnswers = function(query) {
-  // calls out to StackOverflow API and retrieves data
-  // TESTING: using dummy data
-
-  var filepath = __dirname+'/../client/test/sample.json';
-  var file = fs.readFileSync(filepath, 'utf8');
-  return JSON.parse(file).items;
-};
-
-var removeUnanswered = function(data) {
-  var bestResults = data.filter(function (item) {
-    return item.answer_count >=1; 
-  })
-  return bestResults;
-};
 
 var findHighestRepAnswer = function(question) {
   return question.answers.reduce(function(prev,current) {
-    if (current.owner.reputation > prev) return current.owner.reputation;
+    return (current.owner.reputation > prev) ? current.owner.reputation: prev;
   },0);
 };
 
@@ -42,7 +27,6 @@ var getStats = function(data) {
 
     stats.highestRep = findHighestRepAnswer(question);
 
-
     results.push(stats);
   });
 
@@ -53,10 +37,13 @@ var getStats = function(data) {
 module.exports = {
 
   processSearch: function(req, res) {
-    bingHelper.getResults();
+    bingHelper.getResults(req.params.query);
 
     // console.log(req.params.query); //gets the query text
-    var answers = removeUnanswered(retrieveAnswers(req.query));
+    // var answers = removeUnanswered(retrieveAnswers(req.query));
+    var answers = stackHelper.getResults();
+    // stackHelper.test();
+
     res.status(200).send(getStats(answers));
   }
 
