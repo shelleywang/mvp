@@ -1,0 +1,525 @@
+{
+  "items": [
+    {
+      "answers": [
+        {
+          "owner": {
+            "reputation": 70995,
+            "user_id": 200291,
+            "user_type": "registered",
+            "accept_rate": 88,
+            "profile_image": "https://www.gravatar.com/avatar/399cacf55045372a29f1f844d12ee777?s=128&d=identicon&r=PG",
+            "display_name": "icktoofay",
+            "link": "http://stackoverflow.com/users/200291/icktoofay"
+          },
+          "is_accepted": false,
+          "score": 0,
+          "last_activity_date": 1368851968,
+          "creation_date": 1368851968,
+          "answer_id": 16620727,
+          "question_id": 16620665,
+          "body": "<p>In your <code>by3</code> and <code>by5</code> functions, you implicitly return <code>undefined</code> if it is applicable and <code>false</code> if it's not applicable, but your <code>if</code> statement is testing as if it returned <code>true</code> or <code>false</code>. Return <code>true</code> explicitly if it is applicable so your <code>if</code> statement picks it up.</p>\n"
+        },
+        {
+          "owner": {
+            "reputation": 10974,
+            "user_id": 1424361,
+            "user_type": "registered",
+            "accept_rate": 82,
+            "profile_image": "https://www.gravatar.com/avatar/e156aecaca98a4902867363be4b2c540?s=128&d=identicon&r=PG",
+            "display_name": "Ben McCormick",
+            "link": "http://stackoverflow.com/users/1424361/ben-mccormick"
+          },
+          "is_accepted": true,
+          "score": 3,
+          "last_activity_date": 1368852671,
+          "last_edit_date": 1368852671,
+          "creation_date": 1368852075,
+          "answer_id": 16620751,
+          "question_id": 16620665,
+          "body": "<pre><code>/*Write a program that prints the numbers from 1 to 100. But for multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”*/\n\nvar str=\"\",x,y,a;\nfor (a=1;a&lt;=100;a++)\n{\n    x = a%3 ==0;\n    y = a%5 ==0;\n    if(x)\n    {\n        str+=\"fizz\"\n    }\n    if (y)\n    {\n        str+=\"buzz\"\n    }\n    if (!(x||y))\n    {\n        str+=a;\n    }\n    str+=\"\\n\"\n}\nconsole.log(str);\n</code></pre>\n\n<p>Your functions return falsy values no matter what, but will print anyway.  No need to make this overly complicated.</p>\n\n<p>fiddle: <a href=\"http://jsfiddle.net/ben336/7c9KN/\" rel=\"nofollow\">http://jsfiddle.net/ben336/7c9KN/</a></p>\n"
+        },
+        {
+          "owner": {
+            "reputation": 7970,
+            "user_id": 711902,
+            "user_type": "registered",
+            "accept_rate": 71,
+            "profile_image": "https://www.gravatar.com/avatar/36a9e6931ec4828c293156c50ac339ec?s=128&d=identicon&r=PG",
+            "display_name": "Trevor Dixon",
+            "link": "http://stackoverflow.com/users/711902/trevor-dixon"
+          },
+          "is_accepted": false,
+          "score": 24,
+          "last_activity_date": 1373659924,
+          "creation_date": 1373659924,
+          "answer_id": 17623252,
+          "question_id": 16620665,
+          "body": "<pre><code>for (var i = 1; i &lt;= 100; i++) {\n    var expletive = '';\n    if (i % 3 === 0) expletive += 'Fizz';\n    if (i % 5 === 0) expletive += 'Buzz';\n    console.log(expletive || i);\n}\n</code></pre>\n"
+        },
+        {
+          "owner": {
+            "reputation": 6538,
+            "user_id": 1698987,
+            "user_type": "registered",
+            "accept_rate": 79,
+            "profile_image": "http://i.stack.imgur.com/cg2Q3.jpg?s=128&g=1",
+            "display_name": "Noctis",
+            "link": "http://stackoverflow.com/users/1698987/noctis"
+          },
+          "is_accepted": false,
+          "score": 5,
+          "last_activity_date": 1387324255,
+          "creation_date": 1387324255,
+          "answer_id": 20647069,
+          "question_id": 16620665,
+          "body": "<p>Was fooling around with FizzBuzz and JavaScript as comparison to C#.</p>\n\n<p>Here's my version, heavily influenced by more <code>rigid</code> languages:</p>\n\n<pre><code>function FizzBuzz(aTarget) {\n    for (var i = 1; i &lt;= aTarget; i++) {\n        var result = \"\";\n        if (i%3 === 0) result += \"Fizz\";        \n        if (i%5 === 0) result += \"Buzz\";\n        if (result.length ===0) result = i;\n\n        console.log(result);\n    }\n}\n</code></pre>\n\n<p>I like the structure and ease of read.</p>\n\n<p>Now, what <strong>Trevor Dixon</strong> cleverly did is relay on the false-y values of the language (<code>false</code> , <code>null</code> , <code>undefined</code> , <code>''</code> (the empty string) , <code>0</code> and <code>NaN</code> (Not a Number)) to shorten the code.<br>\nNow, the <code>if (result.length ===0) result = i;</code> line is redundant and the code will look like:</p>\n\n<pre><code>function FizzBuzz(aTarget) {\n    for (var i = 1; i &lt;= aTarget; i++) {\n        var result = \"\";\n        if (i%3 === 0) result += \"Fizz\";        \n        if (i%5 === 0) result += \"Buzz\";\n\n        console.log(result || i);\n    }\n}\n</code></pre>\n\n<p>Here we relay on the <code>||</code> operator to say : \"if <code>result</code> is false, print the iteration value (<code>i</code>)\". Cool trick, and I guess I need to play more with JavaScript in order to assimilate this logic.</p>\n\n<p>You can see other examples (from <a href=\"https://gist.github.com/jaysonrowe/1592432\">GitHub</a>) that will range from things like :</p>\n\n<pre><code>for (var i=1; i &lt;= 20; i++)\n{\n    if (i % 15 == 0)\n        console.log(\"FizzBuzz\");\n    else if (i % 3 == 0)\n        console.log(\"Fizz\");\n    else if (i % 5 == 0)\n        console.log(\"Buzz\");\n    else\n        console.log(i);\n}\n</code></pre>\n\n<p>No variables here, and just check for division by 15,3 &amp; 5 (my above one only divides by 3 &amp; 5, but has an extra variable, so I guess it's down to microbenchmarking for those who care, or style preferences).</p>\n\n<p>To:</p>\n\n<pre><code>for(i=0;i&lt;100;)console.log((++i%3?'':'Fizz')+(i%5?'':'Buzz')||i)\n</code></pre>\n\n<p>Which does it all in on line, relaying on the fact that <code>0</code> is a false value, so you can use that for the <code>if-else</code> shorthanded version (<code>? :</code>), in addition to the <code>||</code> trick we've seen before.</p>\n\n<p>Here's a more readable version of the above, with some variables:</p>\n\n<pre><code>for (var i = 1; i &lt;= 100; i++) {\n  var f = i % 3 == 0, b = i % 5 == 0;\n  console.log(f ? b ? \"FizzBuzz\" : \"Fizz\" : b ? \"Buzz\" : i);\n}\n</code></pre>\n\n<p>All in all, you can do it in different ways, and I hope you picked up some nifty tips for use in JavaScript :)</p>\n"
+        },
+        {
+          "owner": {
+            "reputation": 11,
+            "user_id": 3689714,
+            "user_type": "unregistered",
+            "profile_image": "https://www.gravatar.com/avatar/0bd550ebf88e576eb17a892d947b67af?s=128&d=identicon&r=PG",
+            "display_name": "Kaneiba",
+            "link": "http://stackoverflow.com/users/3689714/kaneiba"
+          },
+          "is_accepted": false,
+          "score": 1,
+          "last_activity_date": 1401414824,
+          "creation_date": 1401414824,
+          "answer_id": 23945848,
+          "question_id": 16620665,
+          "body": "<pre><code>for(i = 1; i &lt; 101; i++) {  \n  if(i % 3 === 0) {\n      if(i % 5 === 0) {\n          console.log(\"FizzBuzz\");\n      }\n      else {\n          console.log(\"Fizz\");\n      }\n  }\n  else if(i % 5 === 0) {\n      console.log(\"Buzz\");\n  }\n  else {\n      console.log(i)\n  }\n}\n</code></pre>\n"
+        },
+        {
+          "owner": {
+            "reputation": 1,
+            "user_id": 3998577,
+            "user_type": "unregistered",
+            "profile_image": "https://www.gravatar.com/avatar/a6a38bc88752f8b4f9e12b1681e6be86?s=128&d=identicon&r=PG",
+            "display_name": "user3998577",
+            "link": "http://stackoverflow.com/users/3998577/user3998577"
+          },
+          "is_accepted": false,
+          "score": 0,
+          "last_activity_date": 1409612076,
+          "creation_date": 1409612076,
+          "answer_id": 25613742,
+          "question_id": 16620665,
+          "body": "<pre><code>for (i=1; i&lt;=100; i++) {\n  output = \"\";\n  if (i%5==0) output = \"buzz\"; \n  if (i%3==0) output = \"fizz\" + output;\n  if (output==\"\") output = i;\n  console.log(output);\n}\n</code></pre>\n"
+        },
+        {
+          "owner": {
+            "reputation": 2259,
+            "user_id": 1599609,
+            "user_type": "registered",
+            "profile_image": "https://www.gravatar.com/avatar/fa875f6e1da07f084ac816cd6066ad65?s=128&d=identicon&r=PG",
+            "display_name": "Josue Ibarra",
+            "link": "http://stackoverflow.com/users/1599609/josue-ibarra"
+          },
+          "is_accepted": false,
+          "score": 0,
+          "last_activity_date": 1409853047,
+          "creation_date": 1409853047,
+          "answer_id": 25671958,
+          "question_id": 16620665,
+          "body": "<p>Functional style!  <a href=\"http://jsbin.com/rujara/1/edit?js,console\" rel=\"nofollow\">JSBin Demo</a></p>\n\n<pre><code>// create a iterable array with a length of 100\n// and map every value to a random number from 1 to a 100\nvar series = Array.apply(null, Array(100)).map(function() {\n  return Math.round(Math.random() * 100) + 1;\n});\n\n// define the fizzbuzz function which takes an interger as input\n// it evaluates the case expressions similar to Haskell's guards\nvar fizzbuzz = function (item) {\n  switch (true) {\n    case item % 15 === 0:\n      console.log('fizzbuzz');\n      break;\n    case item % 3 === 0:\n      console.log('fizz');\n      break;\n    case item % 5 === 0:\n      console.log('buzz');\n      break;\n    default:\n      console.log(item);\n      break;\n  }\n};\n\n// map the series values to the fizzbuzz function\nseries.map(fizzbuzz);\n</code></pre>\n"
+        },
+        {
+          "owner": {
+            "reputation": 73,
+            "user_id": 4133789,
+            "user_type": "registered",
+            "profile_image": "https://lh5.googleusercontent.com/-iZv0fBoaHWQ/AAAAAAAAAAI/AAAAAAAAAgk/DqkiiEsJ-Ic/photo.jpg?sz=128",
+            "display_name": "Matt Murphy",
+            "link": "http://stackoverflow.com/users/4133789/matt-murphy"
+          },
+          "is_accepted": false,
+          "score": 0,
+          "last_activity_date": 1413090229,
+          "last_edit_date": 1413090229,
+          "creation_date": 1413089830,
+          "answer_id": 26322021,
+          "question_id": 16620665,
+          "body": "<p>Codeacademy sprang a FizzBuzz on me tonight.  I had a vague memory that it was \"a thing\" so I did this.  Not the best way, perhaps, but different from the above:</p>\n\n<pre><code>var data = {\n    Fizz:3,\n    Buzz:5\n};\n\nfor (var i=1;i&lt;=100;i++) {\n    var value = '';\n    for (var k in data) {\n        value += i%data[k]?'':k;\n    }\n    console.log(value?value:i);\n}\n</code></pre>\n\n<p>It relies on data rather than code. I that if there is an advantage to this approach, it is that you can go FizzBuzzBing 3 5 7 or further without adding additional logic, provided that you assign the object elements in the order your rules specify. For example:</p>\n\n<pre><code>var data = {\n    Fizz:3,\n    Buzz:5,\n    Bing:7,\n    Boom:11,\n    Zing:13\n};\n\nfor (var i=1;i&lt;=1000;i++) {\n    var value = '';\n    for (var k in data) {\n        value += i%data[k]?'':k;\n    }\n    console.log(value?value:i);\n}\n</code></pre>\n"
+        },
+        {
+          "owner": {
+            "reputation": 3948,
+            "user_id": 1463681,
+            "user_type": "registered",
+            "accept_rate": 24,
+            "profile_image": "https://www.gravatar.com/avatar/82a85370ac6830d7858e785db168576f?s=128&d=identicon&r=PG",
+            "display_name": "Wildhoney",
+            "link": "http://stackoverflow.com/users/1463681/wildhoney"
+          },
+          "is_accepted": false,
+          "score": 0,
+          "last_activity_date": 1431445458,
+          "creation_date": 1431445458,
+          "answer_id": 30195668,
+          "question_id": 16620665,
+          "body": "<p>As an ES6 generator: <a href=\"http://www.es6fiddle.net/i9lhnt2v/\" rel=\"nofollow\">http://www.es6fiddle.net/i9lhnt2v/</a></p>\n\n<pre><code>function* FizzBuzz() {\n\n    let index = 0;\n\n    while (true) {\n\n        let value = ''; index++;\n\n        if (index % 3 === 0) value += 'Fizz';\n        if (index % 5 === 0) value += 'Buzz';\n\n        yield value || index;\n\n    }\n\n}\n\nlet fb = FizzBuzz();\nfor (let index = 0; index &lt; 100; index++) {\n    console.log(fb.next().value);\n}\n</code></pre>\n"
+        },
+        {
+          "owner": {
+            "reputation": 1,
+            "user_id": 4042844,
+            "user_type": "registered",
+            "profile_image": "https://lh5.googleusercontent.com/-qUDgd3xwSy8/AAAAAAAAAAI/AAAAAAAAABQ/WrhIToP-Bbs/photo.jpg?sz=128",
+            "display_name": "Mike Vokits",
+            "link": "http://stackoverflow.com/users/4042844/mike-vokits"
+          },
+          "is_accepted": false,
+          "score": 0,
+          "last_activity_date": 1434809644,
+          "last_edit_date": 1434809644,
+          "creation_date": 1434804848,
+          "answer_id": 30954242,
+          "question_id": 16620665,
+          "body": "<p>Another solution, avoiding excess divisions and eliminating excess spaces between \"Fizz\" and \"Buzz\":</p>\n\n<pre><code>    var num  = 1;\n    var FIZZ = 3;   // why not make this easily modded?\n    var BUZZ = 5;   // ditto\n    var UPTO = 100; // ditto\n                    // and easily extended to other effervescent sounds\n\n    while (num &lt; UPTO)\n    {\n        var flag = false;\n        if (num % FIZZ == 0) { document.write (\"Fizz\"); flag = true; }\n        if (num % BUZZ == 0) { document.write (\"Buzz\"); flag = true; }\n        if (flag == false)   { document.write (num); }\n        document.write (\"&lt;br&gt;\");\n        num += 1;\n    }\n</code></pre>\n\n<p>If you're using using jscript/jsc/.net, use Console.Write(). If you're using using Node.js, use process.stdout.write(). Unfortunately, console.log() appends newlines and ignores backspaces, so it's unusable for this purpose. You could also probably append to a string and print it. (I'm a complete n00b, but I think (ok, <em>hope</em>) I've been reasonably thorough.)</p>\n\n<p>\"Whaddya think, sirs?\"</p>\n"
+        },
+        {
+          "owner": {
+            "reputation": 1,
+            "user_id": 4698558,
+            "user_type": "registered",
+            "profile_image": "https://lh5.googleusercontent.com/-cngwbeQLdgc/AAAAAAAAAAI/AAAAAAAAAR4/n12WUIYw6Dw/photo.jpg?sz=128",
+            "display_name": "Mohanad Salah",
+            "link": "http://stackoverflow.com/users/4698558/mohanad-salah"
+          },
+          "is_accepted": false,
+          "score": 0,
+          "last_activity_date": 1438073290,
+          "creation_date": 1438073290,
+          "answer_id": 31671484,
+          "question_id": 16620665,
+          "body": "<p><strong>Thats How i did it :</strong></p>\n\n<p>Not the best code but that did the trick</p>\n\n<pre><code>var numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];\n\nfor(var i = 0 ; i &lt;= 19 ; i++){\n\nvar fizz = numbers[i] % 3 === 0;\nvar buzz = numbers[i] % 5 === 0;\nvar fizzBuzz = numbers[i] % 5 === 0 &amp;&amp; numbers[i] % 3 === 0;\n\nif(fizzBuzz){\n    console.log(\"FizzBuzz\");\n    }\nelse if(fizz){\n    console.log(\"Fizz\");\n    }\nelse if(buzz){\n    console.log(\"Buzz\");\n    }    \nelse{\n    console.log(numbers[i]);\n    }\n\n }\n</code></pre>\n"
+        }
+      ],
+      "tags": [
+        "javascript",
+        "fizzbuzz"
+      ],
+      "owner": {
+        "reputation": 20,
+        "user_id": 1869027,
+        "user_type": "registered",
+        "profile_image": "http://i.stack.imgur.com/BZRrO.jpg?s=128&g=1",
+        "display_name": "pacmanfordinner",
+        "link": "http://stackoverflow.com/users/1869027/pacmanfordinner"
+      },
+      "is_answered": true,
+      "view_count": 8233,
+      "accepted_answer_id": 16620751,
+      "answer_count": 11,
+      "score": 1,
+      "last_activity_date": 1438073290,
+      "creation_date": 1368851229,
+      "question_id": 16620665,
+      "link": "http://stackoverflow.com/questions/16620665/fizzbuzz-programdetails-given-in-javascript",
+      "title": "FizzBuzz program(details given) in Javascript",
+      "body": "<p>Can someone please correct this code of mine for FizzBuzz!, there seems to be a small mistake, this code prints all the numbers, instead of printing only numbers that are not divisible by 3 or 5. </p>\n\n<p>/<em>Write a program that prints the numbers from 1 to 100. But for multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”</em>/</p>\n\n<pre><code>/*Write a program that prints the numbers from 1 to 100. But for multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”*/\n\nfunction isDivisible(numa,num)\n   {if (numa%num==0)\n   {\n       return true;\n   }\n   else\n   {\n       return false;\n   }};\n\n\nfunction by3 (num)\n{\n    if(isDivisible(num,3))\n    {\n        console.log(\"Fizz\");\n    }\n    else{\n    return false;}\n};\n\nfunction by5 (num)\n{\n    if(isDivisible(num,5))\n    {\n        console.log(\"Buzz\");\n    }\n    else {\n        return false;\n    }\n};\n\n\nfor (var a=1;a&lt;=100;a++)\n{\n    if(by3(a))\n    {\n        by3(a);\n        if(by5(a))\n        {\n            by5(a);\n            console.log(\"\\n\");\n        }\n        else\n        {\n            console.log(\"\\n\");\n        }\n    }\n    else if (by5(a))\n    {\n        by5(a);\n        console.log(\"\\n\");\n    }\n    else\n    {\n        console.log(a+\"\\n\")\n    }\n\n\n\n\n}\n</code></pre>\n"
+    },
+    {
+      "answers": [
+        {
+          "owner": {
+            "reputation": 50445,
+            "user_id": 352552,
+            "user_type": "registered",
+            "accept_rate": 92,
+            "profile_image": "https://www.gravatar.com/avatar/d4b0907c0d98a2394568d9bf9e8814c3?s=128&d=identicon&r=PG",
+            "display_name": "Adam Rackis",
+            "link": "http://stackoverflow.com/users/352552/adam-rackis"
+          },
+          "is_accepted": false,
+          "score": 8,
+          "last_activity_date": 1326162833,
+          "last_edit_date": 1326162833,
+          "creation_date": 1326162446,
+          "answer_id": 8797842,
+          "question_id": 8797834,
+          "body": "<p>First, your loop is not even getting off the ground:</p>\n\n<pre><code>for ( i = 1; i &gt; 20; i++ )\n</code></pre>\n\n<p>will not iterate even once since the middle condition is initially false.  I think you meant:</p>\n\n<pre><code>for ( i = 1; i &lt;= 20; i++ )\n</code></pre>\n\n<hr>\n\n<pre><code>\"FizzBuzz\";\n</code></pre>\n\n<p>is just a string literal that JavaScript is ignoring.  You need to output this string somehow:</p>\n\n<pre><code>console.log(\"FizzBuzz\");\n</code></pre>\n\n<p>Also, this block</p>\n\n<pre><code>else {\n    i;\n  }\n</code></pre>\n\n<p>is also not doing anything.  Did you want to display numbers that were divisible by neither 3 nor 5?</p>\n\n<pre><code>else {\n    console.log(i);\n  }\n</code></pre>\n\n<p>And, on a similar note, what is the <code>\"hello\"</code> at the top loop supposed to do?</p>\n\n<hr>\n\n<p>On a more positive note, I see you're using strict equality:</p>\n\n<pre><code>if ( i % 5 === 0 )\n</code></pre>\n\n<p>this is a very, very good habit to be in.  The non-strict equality operator == will do all sorts of implicit conversions if you're not careful.  <em>Always</em> use strict equality unless you purposefully want these implicit conversions to happen.  </p>\n"
+        },
+        {
+          "owner": {
+            "reputation": 413972,
+            "user_id": 14860,
+            "user_type": "registered",
+            "accept_rate": 99,
+            "profile_image": "http://i.stack.imgur.com/CXdfN.jpg?s=128&g=1",
+            "display_name": "paxdiablo",
+            "link": "http://stackoverflow.com/users/14860/paxdiablo"
+          },
+          "is_accepted": false,
+          "score": 3,
+          "last_activity_date": 1326163981,
+          "last_edit_date": 1326163981,
+          "creation_date": 1326163076,
+          "answer_id": 8797901,
+          "question_id": 8797834,
+          "body": "<p>Your specific problems are that you have the wrong sense for the <code>for</code> loop and that  a statement like <code>\"somestring\"</code> or <code>i</code> doesn't actually <em>do</em> anything. What you want to do is output it do the console (or other output stream of some sort) - how to do this depends on the environment your Javascript is running in, and where you want the information to go.</p>\n\n<p>You can also keep in mind that any number evenly divisible by both three <em>and</em> five is a multiple of 15.</p>\n\n<p>So you can simplify your code with something like:</p>\n\n<pre><code>for all numbers in range:\n    if num is a multiple of 15:\n        print \"FizzBuzz\"\n        continue for loop\n\n    if num is a multiple of 3:\n        print \"Fizz\"\n        continue for loop\n\n    if num is a multiple of 5:\n        print \"Buzz\"\n        continue for loop\n\n    print i\n</code></pre>\n\n<p>There are those that will complain about multiple exit or restart points in a loop but you can safely ignore them since they don't understand the reasons behind that guideline, to avoid spaghetti code.</p>\n\n<p>Any code where you can see all the control flow on a single page (such as the eleven lines above) is incapable of being spaghetti code, especially given the consistent handling.</p>\n\n<hr>\n\n<p>Here's the equivalent Javascript code, packaged into a web page for testing:</p>\n\n<pre><code>&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;script type=\"text/javascript\"&gt;\n    var i;\n    for (i = 1; i &lt;= 20; i++) {\n        if (i % 15 === 0) {\n            document.write (\"FizzBuzz&lt;br&gt;\");\n            continue;\n        };  \n\n        if (i % 3 === 0) {\n            document.write (\"Fizz&lt;br&gt;\");\n            continue;\n        };  \n\n        if (i % 5 === 0) {\n            document.write (\"Buzz&lt;br&gt;\");\n            continue;\n        };  \n\n        document.write (i + \"&lt;br&gt;\");\n    }   \n&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;\n</code></pre>\n\n<p>which outputs, as desired:</p>\n\n<pre><code>1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz\n16\n17\nFizz\n19\nBuzz\n</code></pre>\n"
+        },
+        {
+          "owner": {
+            "reputation": 81,
+            "user_id": 1139994,
+            "user_type": "registered",
+            "accept_rate": 100,
+            "profile_image": "https://www.gravatar.com/avatar/897ec39104c21808bc9d7a39b90eaf8e?s=128&d=identicon&r=PG",
+            "display_name": "acjialiren",
+            "link": "http://stackoverflow.com/users/1139994/acjialiren"
+          },
+          "is_accepted": false,
+          "score": 1,
+          "last_activity_date": 1326169593,
+          "last_edit_date": 1326169593,
+          "creation_date": 1326163422,
+          "answer_id": 8797948,
+          "question_id": 8797834,
+          "body": "<p><code>for ( i = 1; i &gt; 20; i++ )</code> means that the program will do nothing. If you expect the variable <code>i</code> to begin with 1 and end with 20, you should do that like <code>for( i = 1; i &lt;= 20; i++)</code>. And if you want to test some number you want, you should use the function like:</p>\n\n<pre><code>function TestFizzBuzz(num){\n    ...\n    ...\n}\nTestFizzBuzz(1);\nTestFizzBuzz(990);\n...\n</code></pre>\n"
+        },
+        {
+          "owner": {
+            "reputation": 585,
+            "user_id": 220820,
+            "user_type": "registered",
+            "accept_rate": 76,
+            "profile_image": "https://www.gravatar.com/avatar/c46d1888de1dddb6a79eb13e5c24259a?s=128&d=identicon&r=PG",
+            "display_name": "Andreas",
+            "link": "http://stackoverflow.com/users/220820/andreas"
+          },
+          "is_accepted": true,
+          "score": 2,
+          "last_activity_date": 1326163906,
+          "creation_date": 1326163906,
+          "answer_id": 8797998,
+          "question_id": 8797834,
+          "body": "<p>After considering all the other very good answers here: </p>\n\n<p>Since you're \"stuck on step 1\" with the code you've provided, I assume you did the same mistake I did after clicking your link and reading the instructions. Step 1 doesn't actually ask you to solve the Fizzbuzz problem. To pass this step, you only have to do something much simpler. Read the (not very good) instructions again ;)</p>\n"
+        },
+        {
+          "owner": {
+            "reputation": 31,
+            "user_id": 3239248,
+            "user_type": "unregistered",
+            "profile_image": "https://www.gravatar.com/avatar/af4b72a8e7a322cb8ad5e24259f95129?s=128&d=identicon&r=PG",
+            "display_name": "Dmitryi",
+            "link": "http://stackoverflow.com/users/3239248/dmitryi"
+          },
+          "is_accepted": false,
+          "score": 3,
+          "last_activity_date": 1390800859,
+          "creation_date": 1390800859,
+          "answer_id": 21373685,
+          "question_id": 8797834,
+          "body": "<pre><code>for (var i = 1; i &lt;= 20; i++) {\n    if (i % 15 === 0) {\n        console.log(\"FizzBuzz\");\n    }\n    else if (i % 3 === 0) {\n        console.log(\"Fizz\");\n    }\n     else if (i % 5 === 0) {\n        console.log(\"Buzz\");\n    }\n    else{\n    console.log(i);\n    };\n} \n</code></pre>\n"
+        },
+        {
+          "owner": {
+            "reputation": 46,
+            "user_id": 4384970,
+            "user_type": "registered",
+            "profile_image": "https://www.gravatar.com/avatar/1e7a8a1a86c9530e82c13b1910a716eb?s=128&d=identicon&r=PG",
+            "display_name": "mik61",
+            "link": "http://stackoverflow.com/users/4384970/mik61"
+          },
+          "is_accepted": false,
+          "score": 1,
+          "last_activity_date": 1419247175,
+          "creation_date": 1419247175,
+          "answer_id": 27601671,
+          "question_id": 8797834,
+          "body": "<p>What if we make things a bit more difficult?\n1) No division or modulo operations allowed;\n2) The loop must skip all unnecessary iterations.\nHere is the answer:</p>\n\n<pre><code>int n3 = 3;\nint n5 = 5;\nint i = 3;\nwhile (i &lt;= 100)\n{\n    Console.Write(i.ToString() + \" - \");\n\n    if (i == n3)\n    {\n        Console.Write(\"fizz\");\n\n        n3 = n3 + 3;\n    }\n\n    if (i == n5)\n    {\n        Console.Write(\"buzz\");\n\n        n5 = n5 + 5;\n    }\n\n    Console.WriteLine();\n\n    i = n3 &lt; n5 ? n3 : n5;\n}\n</code></pre>\n"
+        },
+        {
+          "owner": {
+            "reputation": 1,
+            "user_id": 4677179,
+            "user_type": "registered",
+            "profile_image": "https://lh3.googleusercontent.com/-5Icuh4gK_R0/AAAAAAAAAAI/AAAAAAAAAJM/CZb1qNjqXtg/photo.jpg?sz=128",
+            "display_name": "Douglas da Silva Parnoff",
+            "link": "http://stackoverflow.com/users/4677179/douglas-da-silva-parnoff"
+          },
+          "is_accepted": false,
+          "score": 0,
+          "last_activity_date": 1426521830,
+          "creation_date": 1426521830,
+          "answer_id": 29081476,
+          "question_id": 8797834,
+          "body": "<p>My solution:</p>\n\n<pre><code>var nums = new Array();\n\nfor (var i = 0; i &lt; 20; i++){\n    nums[i] = i + 1;\n}\n\nfor (var i = 0; i &lt; 20; i++){\n    if((nums[i] % 5 == 0) &amp;&amp; (nums[i] % 3 == 0)){\n        console.log(\"FizzBuzz\");\n    }else if(nums[i] % 5 == 0){\n        console.log(\"Buzz\");\n    }else if (nums[i] % 3 == 0){\n        console.log(\"Fizz\");\n    }else{\n        console.log(nums[i]);\n    }\n}\n</code></pre>\n"
+        },
+        {
+          "owner": {
+            "reputation": 4478,
+            "user_id": 3744304,
+            "user_type": "registered",
+            "accept_rate": 100,
+            "profile_image": "http://i.stack.imgur.com/17uwe.jpg?s=128&g=1",
+            "display_name": "connexo",
+            "link": "http://stackoverflow.com/users/3744304/connexo"
+          },
+          "is_accepted": false,
+          "score": 0,
+          "last_activity_date": 1432111271,
+          "creation_date": 1432111271,
+          "answer_id": 30344514,
+          "question_id": 8797834,
+          "body": "<p>Just for the sake of shortness, let's do it in one line:</p>\n\n<pre><code>for (i=1;i&lt;21;i++){console.log(i+\": \"+(i%3?(i%5?i:'Buzz'):(i%5?'Fizz':'FizzBuzz')));};\n</code></pre>\n"
+        },
+        {
+          "owner": {
+            "reputation": 1,
+            "user_id": 5138487,
+            "user_type": "unregistered",
+            "profile_image": "https://www.gravatar.com/avatar/f02a71f63030a62d977eca4b4dc1bed5?s=128&d=identicon&r=PG",
+            "display_name": "stalliondzine",
+            "link": "http://stackoverflow.com/users/5138487/stalliondzine"
+          },
+          "is_accepted": false,
+          "score": 0,
+          "last_activity_date": 1437472251,
+          "creation_date": 1437472251,
+          "answer_id": 31535720,
+          "question_id": 8797834,
+          "body": "<pre><code>  for(var i =1; i&lt;=20; i++){\n  if(i % 15 === 0){\n      console.log(\"FizzBuzz\");\n  }\n  else  if(i % 5 === 0){\n      console.log(\"Buzz\");\n  }\n\n    else  if(i % 3 === 0){\n      console.log(\"Fizz\");\n  }\n  else{\n       console.log(i);\n      }\n\n    };\n</code></pre>\n"
+        }
+      ],
+      "tags": [
+        "javascript",
+        "fizzbuzz"
+      ],
+      "owner": {
+        "reputation": 690,
+        "user_id": 529530,
+        "user_type": "registered",
+        "accept_rate": 40,
+        "profile_image": "https://www.gravatar.com/avatar/a83649c369d0d4b3539a468f18364d47?s=128&d=identicon&r=PG",
+        "display_name": "mrdavidjcole",
+        "link": "http://stackoverflow.com/users/529530/mrdavidjcole"
+      },
+      "is_answered": true,
+      "view_count": 6429,
+      "accepted_answer_id": 8797998,
+      "answer_count": 9,
+      "score": 2,
+      "last_activity_date": 1437472251,
+      "creation_date": 1326162327,
+      "question_id": 8797834,
+      "link": "http://stackoverflow.com/questions/8797834/codecademy-fizzbuzz-app-stuck-on-step-1",
+      "title": "Codecademy FizzBuzz app, stuck on step 1",
+      "body": "<p>Here's my code for <a href=\"http://www.codecademy.com/courses/fizzbuzz/0#!/exercises/0\" rel=\"nofollow\">Codecamedy's FizzBuzz lesson</a></p>\n\n<pre><code>var i;\nfor ( i = 1; i &gt; 20; i++ ) {\n  \"hello\"\n  if ( i % 3 === 0 ) {\n    if ( i % 5 === 0 ) {\n      \"FizzBuzz\";\n    }\n    else {\n      \"Fizz\";\n    }\n  }\n  else if ( i % 5 === 0 ) {\n    \"Buzz\";\n  }\n else {\n    i;\n  }\n}\n</code></pre>\n\n<p>I'm trying to first test whether or not the number (i) is divisible by 3. If it is, I then want to check whether it is also divisible by 5. If both conditions are true, I want it to say \"FizzBuzz\". If only the first condition is true, it should say \"Fizz\". Then, after determining that i is not divisible by 3, it should check whether i is divisible by 5 and show \"Buzz\" if that's the case. Failing all divisibility, it should just show the number.</p>\n\n<p>As I expected... it doesn't work as expected. What terribly embarrassing mistakes have I made?</p>\n"
+    },
+    {
+      "answers": [
+        {
+          "owner": {
+            "reputation": 178364,
+            "user_id": 507674,
+            "user_type": "registered",
+            "accept_rate": 76,
+            "profile_image": "http://i.stack.imgur.com/AS9W9.png?s=128&g=1",
+            "display_name": "Niet the Dark Absol",
+            "link": "http://stackoverflow.com/users/507674/niet-the-dark-absol"
+          },
+          "is_accepted": true,
+          "score": 4,
+          "last_activity_date": 1354766442,
+          "creation_date": 1354766442,
+          "answer_id": 13736742,
+          "question_id": 13736690,
+          "body": "<p>I think you mean <code>&amp;&amp;</code>, not <code>||</code>. With <code>||</code>, you're basically testing to see if the number is not divisible by 3 or by 5 - only if a number is divisible by both do you reject it (in other words, multiples of 15).</p>\n\n<p>The typical answer to FizzBuzz is:</p>\n\n<pre><code>if( i%3 == 0 &amp;&amp; i%5 == 0) FizzBuzz\nelseif( i % 3 == 0) Fizz\nelseif( i % 5 == 0) Buzz\nelse number\n</code></pre>\n\n<p>So to get directly to the number you need for <code>i%3==0</code> to be false AND <code>i%5==0</code> to be false. Therefore, you want <code>if( i%3 !== 0 &amp;&amp; i%5 !== 0)</code></p>\n"
+        },
+        {
+          "owner": {
+            "reputation": 21,
+            "user_id": 4390259,
+            "user_type": "registered",
+            "profile_image": "http://i.stack.imgur.com/HPEWE.jpg?s=128&g=1",
+            "display_name": "Brian",
+            "link": "http://stackoverflow.com/users/4390259/brian"
+          },
+          "is_accepted": false,
+          "score": -1,
+          "last_activity_date": 1420158290,
+          "last_edit_date": 1420158290,
+          "creation_date": 1420157580,
+          "answer_id": 27735958,
+          "question_id": 13736690,
+          "body": "<p>I attacked this the same was as Niet the Dark Absol:</p>\n\n<pre><code>for (var n = 1; n &lt;= 100; n++) {\n    if (n % 3 == 0 &amp;&amp; n % 5 == 0)\n        console.log(\"FizzBuzz\");\n    else if (n % 3 == 0)\n        console.log(\"Fizz\");\n    else if (n % 5 == 0)\n        console.log(\"Buzz\");\n    else\n            console.log(n);\n}\n</code></pre>\n\n<p>However, you can also do it this way:</p>\n\n<pre><code>for (var n = 1; n &lt;= 100; n++) {\n    var output = \"\";\n    if (n % 3 == 0)\n        output += \"Fizz\";\n    if (n % 5 == 0)\n        output += \"Buzz\";\n    console.log(output || n);\n}\n</code></pre>\n\n<p>One of the hardest parts of learning JavaScript - or any language - for me is understanding solutions can come in many ways. I like the first example more, but it's always good to keep thinking and look at other options.</p>\n"
+        }
+      ],
+      "tags": [
+        "javascript",
+        "fizzbuzz"
+      ],
+      "owner": {
+        "reputation": 2384,
+        "user_id": 556006,
+        "user_type": "registered",
+        "accept_rate": 68,
+        "profile_image": "https://www.gravatar.com/avatar/b0dce52fa056d59908345b2e1944fae0?s=128&d=identicon&r=PG",
+        "display_name": "Jascination",
+        "link": "http://stackoverflow.com/users/556006/jascination"
+      },
+      "is_answered": true,
+      "view_count": 426,
+      "accepted_answer_id": 13736742,
+      "answer_count": 2,
+      "score": 1,
+      "last_activity_date": 1420158290,
+      "creation_date": 1354766117,
+      "question_id": 13736690,
+      "link": "http://stackoverflow.com/questions/13736690/javascript-fizzbuzz-issue",
+      "title": "Javascript Fizzbuzz Issue",
+      "body": "<p>I'm trying to do some simple tests to help further my javascript knowledge (which is quite fresh). Goal 1 is to print numbers from 1-100 that aren't divisible by 5 or 3. </p>\n\n<p>I tried the following:</p>\n\n<pre><code>for (var i = 1; i &lt;= 100; i ++) \n{\n    if (i%3 !== 0 || i%5 !== 0){\n        console.log(i);\n    }\n\n}\n</code></pre>\n\n<p>This logs EVERY number from 1-100, and I can't tell why. Probably the simplest simplest questions here but it's doing my head in!</p>\n"
+    },
+    {
+      "answers": [
+        {
+          "owner": {
+            "reputation": 31,
+            "user_id": 3377698,
+            "user_type": "registered",
+            "profile_image": "http://graph.facebook.com/832488289/picture?type=large",
+            "display_name": "Matthew Galbraith",
+            "link": "http://stackoverflow.com/users/3377698/matthew-galbraith"
+          },
+          "is_accepted": false,
+          "score": 0,
+          "last_activity_date": 1398396164,
+          "last_edit_date": 1398396164,
+          "creation_date": 1398394484,
+          "answer_id": 23283381,
+          "question_id": 23037439,
+          "body": "<p>When you write</p>\n\n<pre><code>if(num==3%0 &amp;&amp; num!=5%0) \n</code></pre>\n\n<p>In english, that would read something like:</p>\n\n<pre><code> **\"If num is equal to (3%0) AND num is not equal to (5%0)\"**\n</code></pre>\n\n<p>There's a problem here - <code>**a number % 0 is undefined!**</code> </p>\n\n<p>In context of the fizzbuzz problem, you probably meant something along the lines of:</p>\n\n<pre><code>if(num % 3 == 0 &amp;&amp; num % 5 != 0)\n</code></pre>\n\n<p>which reads in English something like: <code>**\"If (num%3) is equal to zero and (num%5) is NOT equal to zero\"**, or better yet, **\"If num is divisble by 3 and not by 5\"**</code></p>\n\n<p>So yeah, you can use the <code>!=</code> operator in the fizzbuzz problem, if you are careful with your logic!</p>\n"
+        }
+      ],
+      "tags": [
+        "fizzbuzz"
+      ],
+      "owner": {
+        "reputation": 4,
+        "user_id": 3504758,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/d182f37b89afbeb1862c87a10ba767fe?s=128&d=identicon&r=PG",
+        "display_name": "Will",
+        "link": "http://stackoverflow.com/users/3504758/will"
+      },
+      "is_answered": false,
+      "view_count": 165,
+            "answer_count": 1,
+            "score": 0,
+            "last_activity_date": 1398396164,
+            "creation_date": 1397345976,
+            "question_id": 23037439,
+            "link": "http://stackoverflow.com/questions/23037439/using-in-the-fizzbuzz-for-javascript",
+            "title": "Using != in the FizzBuzz for Javascript",
+            "body": "<p>I'm trying to figure out if this application of the != operator is valid for the FizzBuzz problem. Here's my code:</p>\n\n<pre><code>function fizzBuzz(num){\n    if(num==3%0 &amp;&amp; num!=5%0){\n        return(\"Fizz\");\n     }\n    else if(num==5%0 &amp;&amp; num!=3%0){\n        return(\"Buzz\");\n     } \n    else if(num==5%0 &amp;&amp; num==3%0){\n        return(\"FizzBuzz\")\n     }\n    }\n    else {\n    return(num);\n    }\n</code></pre>\n"
+          }
+        ],
+        "has_more": false,
+        "quota_max": 10000,
+        "quota_remaining": 9985
+      }

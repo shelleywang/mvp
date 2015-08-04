@@ -7,6 +7,7 @@
     "angular-ui-router": "^0.2.15",
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
-    "mongoose": "^4.1.0"
+    "mongoose": "^4.1.0",
+    "node-bing-api": "^2.0.0"
   }
 }

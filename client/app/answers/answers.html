@@ -9,10 +9,8 @@
   <div ng-repeat='answer in results'>
     <h3>{{answer.questionText}}</h3>
     <h4>{{answer.link}}</h4>
-    {{answer.answered}} - {{answer.views}} - {{answer.answerCount}} 
-<!--     <div ng-repeat='tag in answer.tags'>
-      {{tag}}
-    </div> -->
+    {{answer.answered}} - {{answer.views}} - {{answer.answerCount}} - 
+    {{answer.postDate}}
   </div>
   <br><br>
 {{results}}

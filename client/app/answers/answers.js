@@ -7,9 +7,6 @@ answers.controller('AnswersCtrl', function($scope, $http, $filter, $stateParams)
   $scope.orderingBy = 'views';
 
   $scope.populate = function() {
-    // $http.get('test/sample.json').success(function(data) {
-    //   $scope.test = data.items;
-    // })
     $http({
       method: 'GET',
       url: '/api/search/'+$scope.query,
