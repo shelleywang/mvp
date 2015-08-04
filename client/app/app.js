@@ -1,7 +1,8 @@
 angular.module('hackerHelpr', 
   ['Answers',
    'Search',
-   'ui.router'])
+   'ui.router',
+   'ngSanitize'])
 .directive('header', function() {
   return {
     restrict: 'E',

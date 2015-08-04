@@ -10,10 +10,18 @@
     <a class='sort' ng-class='{bold: orderingBy === "highestRep"}' ng-click='order("highestRep")'>Rep</a>
   </div>
 
-  <div ng-repeat='answer in results'>
-    <h3><a href='{{answer.link}}'> {{answer.questionText}}</a> </h3>
-    <div><span class='statLabel'>Answered:</span> {{answer.answered}}  <span class='statLabel'>Views:</span> {{answer.views}}  <span class='statLabel'>#Answers:</span> {{answer.answerCount}}  <span class='statLabel'>Rep:</span> {{answer.highestRep}}</div>
-    <div>{{answer.postDate}}</div>
-  </div>
+  <table>
+  <tr ng-repeat='answer in results'>
+    <td class='left'>
+      <h3><a href='{{answer.link}}'> {{answer.questionText}}</a> </h3>
+      <div><span class='statLabel'>Answered:</span> {{answer.answered}}  <span class='statLabel'>Views:</span> {{answer.views}}  <span class='statLabel'>#Answers:</span> {{answer.answerCount}}  <span class='statLabel'>Rep:</span> {{answer.highestRep}}</div>
+      <div>{{answer.postDate}}</div>
+    </td>
+    <td>
+      <!-- {{answer.body}} -->
+      <p ng-bind-html="answer.body"></p>
+    </td>
+  </tr>
+  </table>
   <br><br>
 </div>

@@ -14,6 +14,7 @@ var getStats = function(data) {
   var results = [];
   data.forEach(function(question) {
     var stats = {};
+    stats.body = question.body.slice(0,400)+'...';
     stats.questionText = question.title;
     stats.link = question.link;
     stats.tags = question.tags;

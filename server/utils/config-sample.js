@@ -1,5 +1,6 @@
 
 
 module.exports = {
-  API_KEY: 'ENTER_KEY_HERE'
+  BING_API_KEY: 'ENTER_KEY_HERE',
+  STACKEXCHANGE_API_KEY: 'ENTER_KEY_HERE'
 };

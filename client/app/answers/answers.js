@@ -1,6 +1,7 @@
-var answers = angular.module('Answers', []);
+var answers = angular.module('Answers', ['ngSanitize']);
 
-answers.controller('AnswersCtrl', function($scope, $http, $filter, $stateParams) {
+answers.controller('AnswersCtrl', 
+  function($scope, $http, $filter, $stateParams, $sanitize) {
   $scope.query = $stateParams.search;
   $scope.results = [];
 
@@ -25,5 +26,7 @@ answers.controller('AnswersCtrl', function($scope, $http, $filter, $stateParams)
     $scope.orderingBy = predicate;
   };
 
-
+  $scope.myHTML =
+       'I am an <code>HTML</code>string with ' +
+       '<a href="#">links!</a> and other <em>stuff</em>';
 });

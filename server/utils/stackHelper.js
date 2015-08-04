@@ -8,13 +8,14 @@ var context = new stackexchange(options);
 var filter = {
   filter: '!frpXPuDBQ0W8sj4gZPV7mmVHloK9gkuxoBH',
   site: 'stackoverflow',
-  // key: 'YOUR_API_KEY',
+  // key: config.STACKEXCHANGE_API_KEY,
   // pagesize: 50,
   // tagged: 'node.js',
   // sort: 'activity',
   // order: 'asc'
 };
 
+// temp testing using a sample list of question IDs
 var test = function(ids) {
   var tempIds = [ 13736690,
   16620665,8797834,23037439,26019823,24312243,28344007,31485561,
@@ -31,6 +32,10 @@ var test = function(ids) {
   }, tempIds);
 };
 
+/* 
+ * Uses StackExchange api to get Stackoverflow question information
+ * Given a list of question IDs
+ */
 var retrieveAnswers = function(ids) {
   // calls out to StackOverflow API and retrieves data
   // TESTING: using dummy data
@@ -40,6 +45,9 @@ var retrieveAnswers = function(ids) {
   return JSON.parse(file).items;
 };
 
+/*
+ * Removes questions that have 0 answers
+ */
 var removeUnanswered = function(data) {
   var bestResults = data.filter(function (item) {
     return item.answer_count >=1; 
@@ -47,9 +55,13 @@ var removeUnanswered = function(data) {
   return bestResults;
 };
 
+/*
+ * Given a list of Stackoverflow question IDs, return processed results object
+ */
 var getResults = function(ids) {
   return removeUnanswered(retrieveAnswers(ids));
 };
+
 
 module.exports = {
   getResults: getResults,
