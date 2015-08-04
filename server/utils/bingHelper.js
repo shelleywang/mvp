@@ -1,6 +1,8 @@
-var config = require('./config.js'),
+var fs = require('fs'),
+    config = require('./config.js'),
     Bing = require('node-bing-api')({ accKey: config.API_KEY });
 
+// Uses Bing API to retrieve a list of 20 results from a search query
 var retrieveBing = function(query) {
   // TEMPORARY
   // used to populate dummy data file sample3.json
@@ -13,15 +15,24 @@ var retrieveBing = function(query) {
   })
 };
 
+// Parses the results from the Bing API for a list of StackOverflow Question IDs
 var getResults = function(query) {
   // var data = retrieveBing(query); 
 
   // temporary using dummy data 
-  var filepath = __dirname+'/../client/test/sample3.json';
+  var filepath = __dirname+'/../../client/test/sample3.json';
   var file = fs.readFileSync(filepath, 'utf8');
-  return JSON.parse(file).items;
+  var data = JSON.parse(file).d;
 
-  // TODO: parse json results for stackoverflow question IDs
+  
+  var valid = data.results.filter(function(result) {
+    return result.Url.slice(0,35) === 'http://stackoverflow.com/questions/';
+  });
+  var ids = valid.map(function(validResult) {
+    return +validResult.Url.split('/')[4];
+  });
+  // console.log(ids)
+  return ids;
 };
 
 module.exports = {

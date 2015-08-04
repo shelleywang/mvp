@@ -20,7 +20,6 @@ var removeUnanswered = function(data) {
 };
 
 var findHighestRepAnswer = function(question) {
-  console.log(question.answers[0])
   return question.answers.reduce(function(prev,current) {
     if (current.owner.reputation > prev) return current.owner.reputation;
   },0);
@@ -43,7 +42,7 @@ var getStats = function(data) {
 
     stats.highestRep = findHighestRepAnswer(question);
 
-    
+
     results.push(stats);
   });
 
@@ -54,7 +53,9 @@ var getStats = function(data) {
 module.exports = {
 
   processSearch: function(req, res) {
-    console.log(req.params.query); //gets the query text
+    bingHelper.getResults();
+
+    // console.log(req.params.query); //gets the query text
     var answers = removeUnanswered(retrieveAnswers(req.query));
     res.status(200).send(getStats(answers));
   }
