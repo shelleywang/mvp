@@ -36,34 +36,35 @@ var test = function(ids) {
  * Uses StackExchange api to get Stackoverflow question information
  * Given a list of question IDs
  */
-var retrieveAnswers = function(ids) {
+var retrieveAnswers = function(ids, callback) {
   // calls out to StackOverflow API and retrieves data
   // TESTING: using dummy data
 
-  var filepath = __dirname+'/../../client/test/sample4.json';
-  var file = fs.readFileSync(filepath, 'utf8');
-  return JSON.parse(file).items;
-};
-
-/*
- * Removes questions that have 0 answers
- */
-var removeUnanswered = function(data) {
-  var bestResults = data.filter(function (item) {
-    return item.answer_count >=1; 
-  })
-  return bestResults;
+  // var filepath = __dirname+'/../../client/test/sample4.json';
+  // var file = fs.readFileSync(filepath, 'utf8');
+  // return JSON.parse(file).items;
 };
 
 /*
  * Given a list of Stackoverflow question IDs, return processed results object
  */
-var getResults = function(ids) {
-  return removeUnanswered(retrieveAnswers(ids));
+var getResults = function(ids, callback) {
+  console.log(ids);
+  context.questions.questions(filter, function(err, results){
+    if (err) throw err;
+
+    // console.log(results.items);
+    // console.log(results.has_more);
+
+    var bestResults = results.items.filter(function (item) {
+      return item.answer_count >=1; 
+    })
+
+    callback(bestResults);
+  }, ids);
 };
 
 
 module.exports = {
   getResults: getResults,
-  test: test
 };

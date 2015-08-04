@@ -3,11 +3,11 @@
     <div>Searching for: <span class='searchTerm'>{{query}}</span></div>
     <div>Sort by: 
       <a class='sort' ng-class='{bold: orderingBy === "views"}' ng-click='order("views")'>Views</a>
-      || 
+      | 
       <a class='sort' ng-class='{bold: orderingBy === "answerCount"}' ng-click='order("answerCount")'>AnswerCount</a>
-      || 
+      | 
       <a class='sort' ng-class='{bold: orderingBy === "normDate"}' ng-click='order("normDate")'>Date</a>
-      || 
+      | 
       <a class='sort' ng-class='{bold: orderingBy === "highestRep"}' ng-click='order("highestRep")'>Rep</a>
     </div>
   </div>
@@ -19,7 +19,7 @@
 
     <!-- <table> -->
       <table ng-repeat='answer in results'>
-        <col style="width: 200px;"/>
+        <col style="width: 100px;"/>
         <col style="width: 500px;"/>
         <tr class="linkTitle">
           <td colspan=2>
@@ -32,8 +32,8 @@
               <div>{{answer.postDate}}</div>
               <br>
               <!-- <span class='statLabel'>Answered:</span> {{answer.answered}}   -->
-              <div><span class='statLabel'>Views:</span> {{answer.views}}</div>  
               <div><span class='statLabel'>#Answers:</span> {{answer.answerCount}}</div>
+              <div><span class='statLabel'>Views:</span> {{answer.views}}</div>  
               <div><span class='statLabel'>Rep:</span> {{answer.highestRep}}</div>
             </div>
           </td>
