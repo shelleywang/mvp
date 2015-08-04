@@ -38,6 +38,7 @@ var getStats = function(data) {
 module.exports = {
 
   processSearch: function(req, res) {
+    console.log(req.params.query); //gets the query text
     var answers = removeUnanswered(retrieveAnswers(req.query));
     res.status(200).send(getStats(answers));
   }

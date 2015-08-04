@@ -18,7 +18,7 @@ angular.module('hackerHelpr',
     controller: 'SearchCtrl'
   })
   .state('/results', {
-    url: '/results',
+    url: '/results/:search',
     views: {
       'searchBar' : {
         templateUrl: 'app/search/search.html',

@@ -4,6 +4,6 @@ search.controller('SearchCtrl', function($scope, $http, $location) {
   $scope.searchTerms = '';
 
   $scope.redirect = function() {
-    $location.path('/results');
+    $location.path('/results/'+$scope.searchTerms);
   };
 });

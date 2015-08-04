@@ -1,6 +1,7 @@
 var answers = angular.module('Answers', []);
 
-answers.controller('AnswersCtrl', function($scope, $http, $filter) {
+answers.controller('AnswersCtrl', function($scope, $http, $filter, $stateParams) {
+  $scope.query = $stateParams.search;
   $scope.results = [];
 
   $scope.orderingBy = 'views';
@@ -11,7 +12,7 @@ answers.controller('AnswersCtrl', function($scope, $http, $filter) {
     // })
     $http({
       method: 'GET',
-      url: '/api/search',
+      url: '/api/search/'+$scope.query,
     })
     .then(function (resp) {
       $scope.results = resp.data;

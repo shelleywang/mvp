@@ -1,4 +1,6 @@
 <div ng-app='Answers'> 
+  Your query: {{query}}
+  <br>
   Sort by: 
   <a class='sort' ng-class='{bold: orderingBy === "views"}' ng-click='order("views")'>Views</a>
   || 
@@ -12,4 +14,7 @@
       {{tag}}
     </div> -->
   </div>
+  <br><br>
+{{results}}
+{{test}}
 </div>
