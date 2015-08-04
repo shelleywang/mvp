@@ -10,12 +10,18 @@ var findHighestRepAnswer = function(question) {
   },0);
 };
 
+var decodeHtmlEntity = function(str) {
+  return str.replace(/&#(\d+);/g, function(match, dec) {
+    return String.fromCharCode(dec);
+  });
+};
+
 var getStats = function(data) {
   var results = [];
   data.forEach(function(question) {
     var stats = {};
     stats.body = question.body.slice(0,400)+'...';
-    stats.questionText = question.title;
+    stats.questionText = decodeHtmlEntity(question.title);
     stats.link = question.link;
     stats.tags = question.tags;
     stats.answered = question.is_answered;
