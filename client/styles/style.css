@@ -32,6 +32,14 @@ input.searchbox:focus {
   text-align:center;
   position:fixed;
   left:70%;
-  bottom:0px;
+  top: 10%;
   height:40px;
+}
+
+a.sort {
+  color: blue;
+}
+
+a.sort.bold {
+  color:red;
 }

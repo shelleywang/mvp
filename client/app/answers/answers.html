@@ -1,9 +1,15 @@
 <div ng-app='Answers'> 
-  <div ng-repeat='answer in test'>
-    <h3>{{answer.title}}</h3>
+  Sort by: 
+  <a class='sort' ng-class='{bold: orderingBy === "views"}' ng-click='order("views")'>Views</a>
+  || 
+  <a class='sort' ng-class='{bold: orderingBy === "answerCount"}' ng-click='order("answerCount")'>AnswerCount</a>
+
+  <div ng-repeat='answer in results'>
+    <h3>{{answer.questionText}}</h3>
     <h4>{{answer.link}}</h4>
-    <div ng-repeat='tag in answer.tags'>
+    {{answer.answered}} - {{answer.views}} - {{answer.answerCount}} 
+<!--     <div ng-repeat='tag in answer.tags'>
       {{tag}}
-    </div>
+    </div> -->
   </div>
 </div>
