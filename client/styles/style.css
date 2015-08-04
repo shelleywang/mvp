@@ -43,3 +43,7 @@ a.sort {
 a.sort.bold {
   color:red;
 }
+
+.statLabel {
+  color: grey;
+}

@@ -1,5 +1,6 @@
 var fs = require('fs'),
     config = require('./config.js'),
+    moment = require('moment'),
     Bing = require('node-bing-api')({ accKey: config.API_KEY });
 
 var retrieveBing = function(query) {
@@ -48,7 +49,8 @@ var getStats = function(data) {
     stats.answered = question.is_answered;
     stats.views = question.view_count;
     stats.answerCount = question.answer_count;
-    stats.postDate = new Date(question.creation_date*1000);
+    var unformattedDate = new Date(question.creation_date*1000);
+    stats.postDate = moment(unformattedDate).fromNow();
     stats.link = question.link;
     console.log(findHighestRepAnswer(question));
     stats.highestRep = findHighestRepAnswer(question);

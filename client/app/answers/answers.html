@@ -7,10 +7,9 @@
   <a class='sort' ng-class='{bold: orderingBy === "answerCount"}' ng-click='order("answerCount")'>AnswerCount</a>
 
   <div ng-repeat='answer in results'>
-    <h3>{{answer.questionText}}</h3>
-    <h4>{{answer.link}}</h4>
-    {{answer.answered}} - {{answer.views}} - {{answer.answerCount}} - 
-    {{answer.postDate}}
+    <h3><a href='{{answer.link}}'> {{answer.questionText}}</a> </h3>
+    <div><span class='statLabel'>Answered:</span> {{answer.answered}}  <span class='statLabel'>Views:</span> {{answer.views}}  <span class='statLabel'>#Answers:</span> {{answer.answerCount}} </div>
+    <div>{{answer.postDate}}</div>
   </div>
   <br><br>
 {{results}}
