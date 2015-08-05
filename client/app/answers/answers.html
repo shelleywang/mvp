@@ -12,13 +12,13 @@
     </div>
   </div>
   <div>
-    <p class='footer'>WORK IN PROGRESS<br>
+<!--     <p class='footer'>WORK IN PROGRESS<br>
     By: Shelley Wang 
-    <br>not affiliated with StackOverflow or Bing</p>
+    <br>not affiliated with StackOverflow or Bing</p> -->
 
 
     <!-- <table> -->
-      <table ng-repeat='answer in results'>
+      <table ng-repeat='answer in results '>
         <col style="width: 100px;"/>
         <col style="width: 500px;"/>
         <tr class="linkTitle">
@@ -38,7 +38,6 @@
             </div>
           </td>
           <td>
-            <!-- {{answer.body}} -->
             <div class="summary" ng-bind-html="answer.body"></div>
           </td>
         </tr>

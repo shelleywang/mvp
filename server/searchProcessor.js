@@ -17,11 +17,18 @@ var decodeHtmlEntity = function(str) {
   });
 };
 
+
+var getSummary = function(str) {
+  var newStr = str.slice(0,400);
+  newStr += (str.length >400) ? '...' : '';
+  return newStr;
+}
+
 var getStats = function(data) {
   var results = [];
   data.forEach(function(question) {
     var stats = {};
-    stats.body = question.body.slice(0,400)+'...';
+    stats.body = getSummary(question.body);
     stats.questionText = _.unescape(decodeHtmlEntity(question.title));
     stats.link = question.link;
     stats.tags = question.tags;
@@ -50,7 +57,6 @@ module.exports = {
       bingHelper.getResults(req.params.query, function(ids) {
         // console.log(ids);
         stackHelper.getResults(ids, function(bestResults) {
-          console.log(bestResults)
           response = getStats(bestResults);
           res.status(200).send(response);
         });

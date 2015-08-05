@@ -6,7 +6,8 @@ angular.module('hackerHelpr',
 .directive('header', function() {
   return {
     restrict: 'E',
-    template: '<h1><a class="header" href="#/search">HackerHelpr</a></h1>'
+    template: '<h1><a class="header" href="#/search">HackerHelpr</a></h1>'+
+              '<span><h4>A better way to search StackOverflow</h4></span>'
   };
 })
 .config(function($stateProvider,$urlRouterProvider) {

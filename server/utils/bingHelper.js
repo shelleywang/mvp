@@ -30,7 +30,8 @@ var getResults = function(query, callback) {
 
   retrieveBing(query, function(data) {
     var valid = data.results.filter(function(result) {
-      return result.Url.slice(0,35) === 'http://stackoverflow.com/questions/';
+      return result.Url.slice(0,35) === 'http://stackoverflow.com/questions/' &&
+             result.Url.slice(0,41) !== 'http://stackoverflow.com/questions/tagged';
     });
     var ids = valid.map(function(validResult) {
       return +validResult.Url.split('/')[4];

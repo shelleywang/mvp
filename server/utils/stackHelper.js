@@ -27,8 +27,8 @@ var test = function(ids) {
     var filepath = __dirname+'/../../client/test/sample4.json';
     fs.writeFileSync(filepath, JSON.stringify(results));
 
-    console.log(results.items);
-    console.log(results.has_more);
+    // console.log(results.items);
+    // console.log(results.has_more);
   }, tempIds);
 };
 
@@ -49,7 +49,7 @@ var retrieveAnswers = function(ids, callback) {
  * Given a list of Stackoverflow question IDs, return processed results object
  */
 var getResults = function(ids, callback) {
-  console.log(ids);
+  // console.log(ids);
   context.questions.questions(filter, function(err, results){
     if (err) throw err;
 
